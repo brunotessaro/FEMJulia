@@ -1,0 +1,36 @@
+[PM] To define 1D array use something like this  P = ones(3,) instead of P = ones(3,1)  The second case creates a 2D array.
+
+[PM] find a way to create modules
+[PM] done
+
+[PM] find a way to precompile modules (It is running very fast from inside Atom)
+[PM] done but its not that fast (why?)
+
+[PM] figure out how to plot from inside a function
+
+[PM] collect reactions data (from lagrange)
+
+[PM] Describe naming convection in the element class
+
+[PM] Write ways to catch errors for dumb inputs (optional)
+
+[PM] Write benchmark tests (variable source, variable diffusion)
+
+[PM] Check convection and mass matrix etc (only diffusion and source is checked so far)
+
+[PM] Code optimization, (@time) find slowest part of the code.
+
+[PM] Use Vector and Matrix instead of Array, internally its same code, this is simpler to read
+
+[PM]  Functions can return functions
+      https://en.wikibooks.org/wiki/Introducing_Julia/Functions
+      see simple example file named func_in_type.jl
+      This way we can put jacobian inside the element
+      Also this seems a nice way to define methods inside a class.
+
+[PM] Learn more about what is "abstract" type
+
+[PM]  Use @. to convert all evaluation in the expression as .
+      @. vecA+vecB+vecC equivalent to vecA.+vecB.+vecC
+
+[PM] use sparse vectors and matrices
