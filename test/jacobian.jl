@@ -25,7 +25,7 @@ function case2()
     gp = 1
     Te = m3.t[elemnum,:]
     Xe  = m3.x[Te,1:elem.dim]
-
+    
     return jacobian(elem,Xe,gp)
 end
 
@@ -36,14 +36,17 @@ function case3()
     elem = TRI3N()
     m3 = create_mesh(sq1,elem,0.5)
 
-    elemnum = 2
+    elemnum = 1
     gp = 1
     Te = m3.t[elemnum,:]
     Xe  = m3.x[Te,1:elem.dim]
 
+    # A = [-Xe[1,1]+Xe[2,1] -Xe[1,2]+Xe[2,2];
+    #      -Xe[1,1]+Xe[3,1] -Xe[1,2]+Xe[3,2]]
+    # println(A)                  
+    
     return jacobian(elem,Xe,gp)
 end
 
-println(case3())
 
-
+# prinln(case3())
