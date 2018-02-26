@@ -29,4 +29,21 @@ function case2()
     return jacobian(elem,Xe,gp)
 end
 
-case2()
+function case3()
+    # tri3 element
+
+    sq1 = create_rectangle(0,2,0,2)
+    elem = TRI3N()
+    m3 = create_mesh(sq1,elem,0.5)
+
+    elemnum = 2
+    gp = 1
+    Te = m3.t[elemnum,:]
+    Xe  = m3.x[Te,1:elem.dim]
+
+    return jacobian(elem,Xe,gp)
+end
+
+println(case3())
+
+
