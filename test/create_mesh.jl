@@ -17,3 +17,9 @@ elem = QUAD4N()
 m3 = create_mesh(sq1,elem,0.5)
 
 dump(m3)
+
+sq2 = create_rectangle(0,1,0,2)
+elem = TRI3N()
+m4 = create_mesh(sq2,elem,0.5)
+
+dump(m4)
