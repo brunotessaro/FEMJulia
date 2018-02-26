@@ -1,6 +1,5 @@
-
-
 function create_mesh(geom::Line,element::BAR2N,esize::Float64)
+    # create mesh for a line with 2-noded bars
     xmax = geom.x2
     xmin = geom.x1
     nelems = Int(ceil((xmax-xmin)/esize))
@@ -20,6 +19,7 @@ function create_mesh(geom::Line,element::BAR2N,esize::Float64)
 end
 
 function create_mesh(geom::Line,element::BAR3N,esize::Float64)
+    # create mesh for a line with 3-noded bars
     xmax = geom.x2
     xmin = geom.x1
     nelems = Int(ceil((xmax-xmin)/esize))
@@ -42,6 +42,7 @@ function create_mesh(geom::Line,element::BAR3N,esize::Float64)
 end
 
 function create_mesh(geom::Rectangle,element::QUAD4N,esize::Float64)
+    # create mesh for rectangle with 4-noded quads
     xmax = geom.x2
     xmin = geom.x1
     ymax = geom.y2
@@ -84,5 +85,43 @@ function create_mesh(geom::Rectangle,element::QUAD4N,esize::Float64)
             elemnum = elemnum + 1
         end
     end
+    return Mesh(x, t, nnodes, ndofs, nelems, nodeperelem, ename)
+end
+
+function create_mesh(geom::Rectangle,element::TRI3N,esize::Float64)
+    # create mesh for a rectangle with 5  3-noded triangle elements,
+    # used just for testing
+    xmax = geom.x2
+    xmin = geom.x1
+    ymax = geom.y2
+    ymin = geom.y1
+    nelems_x = 1
+    nelems_y = 1
+    nnodes_x = nelems_x+1
+    nnodes_y = nelems_y+1
+
+    nelems = 4
+    nnodes = 5
+
+    ename = element.ename
+    nodeperelem = 3
+    dim = 2
+    ndofs = nnodes
+
+    x = zeros(Float64,nnodes,3)
+    t = zeros(Int64, nelems, nodeperelem)
+
+
+    x[1,:] = [xmin, ymin, 0]
+    x[2,:] = [xmax, ymin, 0]
+    x[3,:] = [xmax, ymax, 0]
+    x[4,:] = [xmin, ymax, 0]
+    x[5,:] = [xmax/2, ymax/2, 0]
+
+    t[1,:] = [1, 2, 5]
+    t[2,:] = [2, 3, 5]
+    t[3,:] = [3, 4, 5]
+    t[4,:] = [4, 1, 5]
+    
     return Mesh(x, t, nnodes, ndofs, nelems, nodeperelem, ename)
 end
